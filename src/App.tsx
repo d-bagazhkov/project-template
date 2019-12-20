@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LeftMenu from "./LeftMenu";
+
+import ReadmePage from "./pages/readme-page";
+import RegexPage from "./pages/regex-page";
+import JinjavaPage from "./pages/jinjava-page";
+import {Switch, Route} from 'react-router-dom';
+
+
+
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div>
+      <LeftMenu  />
+
+      <div className="page-wrap">
+        <Switch>
+          <Route exact  path={['/readme', '/']} component={ReadmePage}/>
+          {/* Оба /roster и /roster/:number начинаются с /roster */}
+          <Route path='/regex' component={RegexPage}/>
+          <Route path='/jinjava' component={JinjavaPage}/>
+        </Switch>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
